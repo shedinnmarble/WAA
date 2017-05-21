@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml" 
+      xmlns:f = "http://java.sun.com/jsf/core"     
+      xmlns:h = "http://java.sun.com/jsf/html"> 
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            From: <h:selectOneMenu  value="#{UIData.selectedFrom}"  >
+                <f:selectItems value="#{UIData.fromList}" var="s" itemLabel="#{s}" itemValue="#{s}" ></f:selectItems>
+            </h:selectOneMenu > <br/>
+            To: <h:selectOneMenu  value="#{UIData.selectedTo}"  >
+                <f:selectItems value="#{UIData.toList}" var="s" itemLabel="#{s}" itemValue="#{s}" ></f:selectItems>
+            </h:selectOneMenu > <br/>
+            Departure date: <h:inputText value="#{UIData.departureDate}" /><br/>
+            Return Date： <h:inputText value="#{UIData.returnDate}" />
+            <h:selectOneRadio value = "#{UIData.isRoundTripe}"> 
+                <f:selectItem itemValue = "#{UIData.isRoundTripe=true}" itemLabel = "Round Trip" /> 
+                <f:selectItem itemValue = "#{UIData.isRoundTripe =false}" itemLabel = "One Way" />
+            </h:selectOneRadio>  
+            <h:selectBooleanCheckbox value="#{UIData.isFirstClass}"/>First Class<br/>
+            <h:selectBooleanCheckbox value="#{UIData.isExactTheseDays}"/>Except There Days<br/>
+            <h:selectBooleanCheckbox value="#{UIData.isNoStop}"/>No Stop Over<br/>
+            <h:commandButton value="Submit" action="#{UIData.submit()}"/>
+        </h:form>
+    </h:body>
+</html>
+
