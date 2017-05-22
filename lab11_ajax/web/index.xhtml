@@ -10,14 +10,22 @@
     <title>Lab 11 by Dewei</title>
 </h:head>
 <body>
-<h:inputText value="#{Country.filterCountry}"></h:inputText>
-<!--<ui:repeat value="#{Country.countries}" var="s">-->
-    <!--#{s}-->
-<!--</ui:repeat>-->
-<select multiple="multiple">
-    <c:forEach var ="country" items="#{Country.countries}">
-        <option>#{country}</option>
-    </c:forEach>
-</select>
+<f:view>
+    <h:form>
+
+        <h:inputText value="#{Country.filterCountry}" id="inputCountry" onchange="submit()">
+            <f:ajax event="keydown" listener="#{Country.countryChanged}"
+                    render="outputCountry"></f:ajax>
+        </h:inputText>
+
+        <h:outputFormat id="outputCountry">
+            <select multiple="multiple" >
+                <c:forEach var="country" items="#{Country.countries}">
+                    <option>#{country}</option>
+                </c:forEach>
+            </select>
+        </h:outputFormat>
+    </h:form>
+</f:view>
 </body>
 </html>

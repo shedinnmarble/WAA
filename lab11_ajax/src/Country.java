@@ -1,5 +1,6 @@
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -16,6 +17,11 @@ public class Country {
     private String filterCountry;
     public Country(){
         this.setCountries(getCountries());
+    }
+    public void countryChanged(ValueChangeEvent e) {
+
+        //assign new value to country
+        this.countries = (List<String>) e.getNewValue();
     }
     public List<String> getCountries() {
 
