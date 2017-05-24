@@ -14,13 +14,13 @@
     <h:form>
 
         <h:inputText value="#{Country.filterCountry}" id="inputCountry" onchange="submit()">
-            <f:ajax event="keydown" listener="#{Country.countryChanged}"
+            <f:ajax event="keyup" listener="#{Country.countryChanged}"
                     render="outputCountry"></f:ajax>
-        </h:inputText>
+        </h:inputText><br/>
 
         <h:outputFormat id="outputCountry">
-            <select multiple="multiple" >
-                <c:forEach var="country" items="#{Country.countries}">
+            <select multiple="multiple">
+                <c:forEach var="country" items="#{Country.filteredCountries}">
                     <option>#{country}</option>
                 </c:forEach>
             </select>
