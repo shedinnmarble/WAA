@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="lab12_shoppingcart:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab12_shoppingcart_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="lab12_shoppingcart/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="lab12_shoppingcart" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Mojarra-2.2.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
