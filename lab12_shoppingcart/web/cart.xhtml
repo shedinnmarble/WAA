@@ -9,33 +9,41 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 <body>
 <f:view>
-    <div class="container">
-        <h1>Shopping Cart</h1>
-        <table id="shoppingCart" class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-            </tr>
-            </thead>
-            <c:forEach items="#{ProductController.getShoppingCart().entrySet()}" var="cart">
+    <h:form>
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <table id="shoppingCart" class="table table-bordered">
+                <thead>
                 <tr>
-                    <td>#{cart.getKey().getId()}</td>
-                    <td>#{cart.getKey().getName()}</td>
-                    <td>#{cart.getKey().getPrice()}</td>
-                    <td>#{cart.getValue()}</td>
-                    <td>#{cart.getKey().getPrice() * cart.getValue()}</td>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <td>Operation</td>
                 </tr>
-            </c:forEach>
-            <tr>
-                <td colspan="4">Total Price</td>
-                <td>#{ProductController.getTotalPrice()}</td>
-            </tr>
-        </table>
-    </div>
+                </thead>
+                <c:forEach items="#{ProductController.getShoppingCart().entrySet()}" var="cart">
+                    <tr>
+                        <td>#{cart.getKey().getId()}</td>
+                        <td>#{cart.getKey().getName()}</td>
+                        <td>#{cart.getKey().getPrice()}</td>
+                        <td>#{cart.getValue()}</td>
+                        <td>#{cart.getKey().getPrice() * cart.getValue()}</td>
+
+                        <td>
+                            <h:commandButton action="#{ProductController.removeFromCart(cart.getKey())}" value="Remove From Cart"></h:commandButton>
+                        </td>
+                    </tr>
+                </c:forEach>
+                <tr>
+                    <td colspan="4">Total Price</td>
+                    <td colspan="2">#{ProductController.getTotalPrice()}</td>
+                </tr>
+            </table>
+        </div>
+    </h:form>
+    <a class="btn btn-info" href="index.xhtml">Return to Home</a>
 </f:view>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

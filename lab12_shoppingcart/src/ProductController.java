@@ -33,7 +33,15 @@ public class ProductController {
         } else {
             this.shoppingCart.put(p, 1);
         }
-        System.out.println(String.format("Shopping cart has %d items.", this.shoppingCart.size()));
+//        System.out.println(String.format("Shopping cart has %d items.", this.shoppingCart.size()));
+        double totalPrice = this.shoppingCart.entrySet().stream().map(product -> product.getValue() * product.getKey().getPrice()).reduce(0.0, (a, b) ->
+                a + b);
+        this.setTotalPrice(totalPrice);
+    }
+    public void removeFromCart(Product p){
+        if(this.shoppingCart.containsKey(p)){
+            this.shoppingCart.remove(p);
+        }
         double totalPrice = this.shoppingCart.entrySet().stream().map(product -> product.getValue() * product.getKey().getPrice()).reduce(0.0, (a, b) ->
                 a + b);
         this.setTotalPrice(totalPrice);
